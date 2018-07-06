@@ -1,4 +1,4 @@
-#include "intarray.h"
+#include "int_array.h"
 
 void IntArray::init( int sz, int *array )
 {
@@ -18,12 +18,12 @@ IntArray::IntArray( int sz )
 IntArray::IntArray( int *array, int sz )
 { init( sz, array ); }
 
-IntArray::IntArray( const IntArray &rhs )
+IntArray::IntArray(const IntArray &rhs)
 { init( rhs._size, rhs.ia ); }
 
-int main() {
-    IntArray myArray = IntArray();
-    myArray[0] = 250;
-    std::cout << myArray[0];
-    return 0;
+void swap(IntArray &ia, int i, int j)
+{
+    int tmp = ia[ i ];
+    ia[ i ] = ia[ j ];
+    ia[ j ] = tmp;
 }

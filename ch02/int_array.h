@@ -1,14 +1,18 @@
+#ifndef IntArray_H
+#define IntArray_H
+
 #include <cassert>
 #include <iostream>
+
 
 class IntArray {
 
 public:
-    IntArray(int sz = DefaultArraySize);
+    explicit IntArray(int sz = DefaultArraySize);
     IntArray(int *array, int sz);
     IntArray(const IntArray &rhs);
 
-    ~IntArray() { delete [] ia; }
+    virtual ~IntArray() { delete [] ia; }
 
     // 等于和不等于操作
     bool operator == (const IntArray&) const;
@@ -16,12 +20,14 @@ public:
     IntArray& operator = (const IntArray&);
     int size() const {return _size;};
 
-    void sort();
-    int min() const; // #3a
-    int max() const; // #3b
-    int find(int value) const; // #3c
-    int& operator[](int index) {return ia[index];}
-
+    /*
+    virtual void sort();
+    virtual int min() const; // #3a
+    virtual int max() const; // #3b
+    virtual int find(int value) const; // #3c
+    */
+    virtual int& operator[](int index) {return ia[index];}
+    
 protected:
     // 私有实现代码
     static const int DefaultArraySize = 12;
@@ -29,3 +35,5 @@ protected:
     int _size;
     int *ia;
 };
+
+#endif
